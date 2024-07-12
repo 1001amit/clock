@@ -65,6 +65,13 @@ body {
 .digital-clock, .date-display {
     margin-top: 10px;
     font-size: 1.5em;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.time-zone-selector {
+    margin-top: 20px;
+    font-size: 1em;
 }
 
 .settings-panel, .world-clock, .weather-info {
@@ -80,6 +87,10 @@ body {
 
     .digital-clock, .date-display {
         font-size: 1.2em;
+    }
+
+    .time-zone-selector {
+        font-size: 0.8em;
     }
 }
 
