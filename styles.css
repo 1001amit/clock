@@ -1,9 +1,16 @@
+/* General styles */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
+}
+
+.clock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .clock {
@@ -53,5 +60,26 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.digital-clock, .date-display {
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+
+.settings-panel, .world-clock, .weather-info {
+    margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .clock {
+        width: 150px;
+        height: 150px;
+    }
+
+    .digital-clock, .date-display {
+        font-size: 1.2em;
+    }
 }
 
