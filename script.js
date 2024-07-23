@@ -17,8 +17,11 @@ function updateClocks() {
 
         if (alarmTime && localeTime.getHours() === alarmTime.hours && localeTime.getMinutes() === alarmTime.minutes) {
             document.getElementById('alarm-message').textContent = 'Alarm ringing!';
+            document.getElementById('alarm-sound').play();
             alarmTimeout = setTimeout(() => {
                 document.getElementById('alarm-message').textContent = '';
+                document.getElementById('alarm-sound').pause();
+                document.getElementById('alarm-sound').currentTime = 0;
             }, 60000);  // Alarm message stays for 1 minute
             alarmTime = null;
         }
@@ -56,3 +59,4 @@ setInterval(updateClocks, 1000);
 document.addEventListener('DOMContentLoaded', () => {
     updateClocks();
 });
+
