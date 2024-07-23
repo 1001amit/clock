@@ -8,20 +8,41 @@
 </head>
 <body>
     <div class="clock-container">
-        <div class="digital-clock"></div>
-        <div class="date-display"></div>
-        <div class="time-zone-selector">
-            <label for="time-zone">Select Time Zone:</label>
-            <select id="time-zone">
-                <option value="America/New_York">New York</option>
-                <option value="Europe/London">London</option>
-                <option value="Asia/Tokyo">Tokyo</option>
-                <option value="Australia/Sydney">Sydney</option>
-                <option value="Asia/Kolkata">India</option>
-            </select>
+        <div class="clocks">
+            <div class="clock" data-timezone="America/New_York">
+                <div class="digital-clock"></div>
+                <div class="date-display"></div>
+                <div class="clock-label">New York</div>
+            </div>
+            <div class="clock" data-timezone="Europe/London">
+                <div class="digital-clock"></div>
+                <div class="date-display"></div>
+                <div class="clock-label">London</div>
+            </div>
+            <div class="clock" data-timezone="Asia/Tokyo">
+                <div class="digital-clock"></div>
+                <div class="date-display"></div>
+                <div class="clock-label">Tokyo</div>
+            </div>
+            <div class="clock" data-timezone="Australia/Sydney">
+                <div class="digital-clock"></div>
+                <div class="date-display"></div>
+                <div class="clock-label">Sydney</div>
+            </div>
+            <div class="clock" data-timezone="Asia/Kolkata">
+                <div class="digital-clock"></div>
+                <div class="date-display"></div>
+                <div class="clock-label">India</div>
+            </div>
         </div>
         <div class="mode-toggle">
             <button id="toggle-mode">Switch to Night Mode</button>
+        </div>
+        <div class="alarm-settings">
+            <label for="alarm-time">Set Alarm:</label>
+            <input type="time" id="alarm-time">
+            <button id="set-alarm">Set Alarm</button>
+            <div id="alarm-message"></div>
         </div>
     </div>
     <script src="script.js"></script>

@@ -18,28 +18,57 @@ body {
     align-items: center;
 }
 
+.clocks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.clock {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
 .digital-clock, .date-display {
-    margin-top: 10px;
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: 'Arial', sans-serif;
     color: inherit;
 }
 
-.time-zone-selector {
-    margin-top: 20px;
+.clock-label {
+    margin-top: 5px;
     font-size: 1em;
 }
 
-.mode-toggle {
+.mode-toggle, .alarm-settings {
     margin-top: 20px;
+}
+
+.alarm-settings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.alarm-settings input, .alarm-settings button {
+    margin: 5px;
 }
 
 @media (max-width: 600px) {
     .digital-clock, .date-display {
-        font-size: 1.5em;
+        font-size: 1.2em;
     }
 
-    .time-zone-selector {
+    .clock {
+        width: 150px;
+    }
+
+    .mode-toggle, .alarm-settings {
         font-size: 0.8em;
     }
 }

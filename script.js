@@ -1,20 +1,27 @@
 let selectedTimeZone = 'America/New_York';
 let isNightMode = false;
+let alarmTime = null;
+let alarmTimeout = null;
 
-function updateClock() {
+function updateClocks() {
     const now = new Date();
-    const timeZoneOptions = { timeZone: selectedTimeZone, hour12: false };
-    const localeTime = new Date(now.toLocaleString('en-US', timeZoneOptions));
+    const clocks = document.querySelectorAll('.clock');
 
-    document.querySelector('.digital-clock').textContent = localeTime.toLocaleTimeString('en-US', timeZoneOptions);
-    document.querySelector('.date-display').textContent = localeTime.toDateString();
-}
+    clocks.forEach(clock => {
+        const timeZone = clock.getAttribute('data-timezone');
+        const timeZoneOptions = { timeZone: timeZone, hour12: false };
+        const localeTime = new Date(now.toLocaleString('en-US', timeZoneOptions));
 
-function updateTimeZone() {
-    const timeZoneSelector = document.getElementById('time-zone');
-    timeZoneSelector.addEventListener('change', (event) => {
-        selectedTimeZone = event.target.value;
-        updateClock();
+        clock.querySelector('.digital-clock').textContent = localeTime.toLocaleTimeString('en-US', timeZoneOptions);
+        clock.querySelector('.date-display').textContent = localeTime.toDateString();
+
+        if (alarmTime && localeTime.getHours() === alarmTime.hours && localeTime.getMinutes() === alarmTime.minutes) {
+            document.getElementById('alarm-message').textContent = 'Alarm ringing!';
+            alarmTimeout = setTimeout(() => {
+                document.getElementById('alarm-message').textContent = '';
+            }, 60000);  // Alarm message stays for 1 minute
+            alarmTime = null;
+        }
     });
 }
 
@@ -32,11 +39,20 @@ function toggleMode() {
     }
 }
 
-document.getElementById('toggle-mode').addEventListener('click', toggleMode);
+function setAlarm() {
+    const alarmInput = document.getElementById('alarm-time').value;
+    if (alarmInput) {
+        const [hours, minutes] = alarmInput.split(':').map(Number);
+        alarmTime = { hours, minutes };
+        document.getElementById('alarm-message').textContent = `Alarm set for ${hours}:${minutes}`;
+    }
+}
 
-setInterval(updateClock, 1000);
+document.getElementById('toggle-mode').addEventListener('click', toggleMode);
+document.getElementById('set-alarm').addEventListener('click', setAlarm);
+
+setInterval(updateClocks, 1000);
 
 document.addEventListener('DOMContentLoaded', () => {
-    updateClock();
-    updateTimeZone();
+    updateClocks();
 });
