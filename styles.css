@@ -62,17 +62,13 @@ body {
     font-weight: bold;
 }
 
-.mode-toggle, .alarm-settings {
+.mode-toggle, .time-format-toggle, .alarm-settings {
     margin-top: 20px;
 }
 
-.alarm-settings {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.alarm-settings input, .alarm-settings button {
+.time-format-toggle button,
+.alarm-settings input,
+.alarm-settings button {
     margin: 5px;
     padding: 10px;
     font-size: 1em;
@@ -89,7 +85,7 @@ body {
         width: 120px;
     }
 
-    .mode-toggle, .alarm-settings {
+    .mode-toggle, .time-format-toggle, .alarm-settings {
         font-size: 0.8em;
     }
 }

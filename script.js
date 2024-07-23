@@ -1,15 +1,22 @@
-let selectedTimeZone = 'America/New_York';
+let selectedTimeZone = 'Asia/Kolkata';
 let isNightMode = false;
+let is24HourFormat = true;
 let alarmTime = null;
 let alarmTimeout = null;
 
 function updateClocks() {
     const now = new Date();
     const clocks = document.querySelectorAll('.clock');
+    const timeFormatOptions = {
+        hour12: !is24HourFormat,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    };
 
     clocks.forEach(clock => {
         const timeZone = clock.getAttribute('data-timezone');
-        const timeZoneOptions = { timeZone: timeZone, hour12: false };
+        const timeZoneOptions = { ...timeFormatOptions, timeZone: timeZone };
         const localeTime = new Date(now.toLocaleString('en-US', timeZoneOptions));
 
         clock.querySelector('.digital-clock').textContent = localeTime.toLocaleTimeString('en-US', timeZoneOptions);
@@ -42,6 +49,17 @@ function toggleMode() {
     }
 }
 
+function toggleTimeFormat() {
+    const button = document.getElementById('toggle-time-format');
+    is24HourFormat = !is24HourFormat;
+
+    if (is24HourFormat) {
+        button.textContent = 'Switch to 12-Hour Format';
+    } else {
+        button.textContent = 'Switch to 24-Hour Format';
+    }
+}
+
 function setAlarm() {
     const alarmInput = document.getElementById('alarm-time').value;
     if (alarmInput) {
@@ -52,6 +70,7 @@ function setAlarm() {
 }
 
 document.getElementById('toggle-mode').addEventListener('click', toggleMode);
+document.getElementById('toggle-time-format').addEventListener('click', toggleTimeFormat);
 document.getElementById('set-alarm').addEventListener('click', setAlarm);
 
 setInterval(updateClocks, 1000);
