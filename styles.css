@@ -4,6 +4,12 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.night-mode {
+    background-color: #333;
+    color: #f0f0f0;
 }
 
 .clock-container {
@@ -16,12 +22,16 @@ body {
     margin-top: 10px;
     font-size: 2em;
     font-family: 'Arial', sans-serif;
-    color: #333;
+    color: inherit;
 }
 
 .time-zone-selector {
     margin-top: 20px;
     font-size: 1em;
+}
+
+.mode-toggle {
+    margin-top: 20px;
 }
 
 @media (max-width: 600px) {
@@ -33,4 +43,3 @@ body {
         font-size: 0.8em;
     }
 }
-    
