@@ -3,17 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Clock</title>
+    <title>Clock</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="clock-container">
         <div class="clocks">
-            <div class="clock" data-timezone="Asia/Kolkata">
-                <div class="digital-clock"></div>
-                <div class="date-display"></div>
-                <div class="clock-label">India</div>
-            </div>
             <div class="clock" data-timezone="America/New_York">
                 <div class="digital-clock"></div>
                 <div class="date-display"></div>
@@ -34,12 +29,14 @@
                 <div class="date-display"></div>
                 <div class="clock-label">Sydney</div>
             </div>
+            <div class="clock" data-timezone="Asia/Kolkata">
+                <div class="digital-clock"></div>
+                <div class="date-display"></div>
+                <div class="clock-label">India</div>
+            </div>
         </div>
         <div class="mode-toggle">
             <button id="toggle-mode">Switch to Night Mode</button>
-        </div>
-        <div class="time-format-toggle">
-            <button id="toggle-time-format">Switch to 12-Hour Format</button>
         </div>
         <div class="alarm-settings">
             <label for="alarm-time">Set Alarm:</label>
@@ -52,4 +49,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
